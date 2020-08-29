@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.ps.config.AppConfig;
 import com.ps.dto.ProjectDTO;
 import com.ps.service.ProjectMgmtService;
 
@@ -19,20 +20,20 @@ public class ORMHibernateTest {
 		ProjectDTO proj=null;
 		
 		//create IOC container
-		ctx=new ClassPathXmlApplicationContext("com/ps/cfgs/applicationContext.xml");
+		ctx=new AnnotationConfigApplicationContext(AppConfig.class);
 		//get bean obj
 		service=ctx.getBean("projService", ProjectMgmtService.class);
 		//add project details
 		proj=new ProjectDTO();
 		proj.setProjId(2121);
-		proj.setProjName("OpenFx1");
+		proj.setProjName("OpenFx3");
 		proj.setCompany("HCL");
 		proj.setTeamSize(14);
 		proj.setLocation("Hyd");
-		proj.setCost(1000000000.0);
+		proj.setCost(160000.0);
 		//invoke method for project registration
 		try {
-			//System.out.println(service.registerProject(proj));
+			System.out.println(service.registerProject(proj));
 			//System.out.println("----------------------------------------------------------------------");
 			//System.out.println(service.fetchProjectById(3));
 			//System.out.println("------------------------------------------------------------------------");

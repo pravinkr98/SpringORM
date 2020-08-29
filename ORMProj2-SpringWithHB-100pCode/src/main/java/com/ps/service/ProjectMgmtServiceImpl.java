@@ -13,7 +13,7 @@ import com.ps.dto.ProjectDTO;
 import com.ps.entity.Project;
 
 @Service("projService")
-@Transactional
+@Transactional(transactionManager = "hbTxMgmr")
 public class ProjectMgmtServiceImpl implements ProjectMgmtService {
 	
 	@Autowired
